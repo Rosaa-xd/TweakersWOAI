@@ -15,19 +15,16 @@
             <ul class="navbar">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("PriceWatch", "Pricewatch", "Category")</li>
-                <li>@Html.ActionLink("Wenslijst", "Wishlist", "UserList")</li>
-                <li>@Html.ActionLink("Inventaris", "Inventory", "UserList")</li>
-                <li>@Html.ActionLink("Inloggen", "Login", "User")</li>
-                <li>@Html.ActionLink("Uitloggen", "Logout", "User")</li>
-
-                @*@if (Request.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Uitloggen", "Logout", "User")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Inloggen", "Login", "User")</li>
-                    }*@
+                @if (Request.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Wenslijst", "Wishlist", "UserList")</li>
+                    <li>@Html.ActionLink("Inventaris", "Inventory", "UserList")</li>
+                    <li>@Html.ActionLink("Uitloggen", "Logout", "User")</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Inloggen", "Login", "User")</li>
+                }
             </ul>
         </div>
     </header>

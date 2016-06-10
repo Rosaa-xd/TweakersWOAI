@@ -13,5 +13,11 @@ namespace Tweakers.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        public ActionResult WriteReview()
+        {
+            return View();
+        }
     }
 }
