@@ -1,0 +1,46 @@
+﻿@model Tweakers.Models.Product
+
+@{
+    Layout = "~/Views/Product/_ProductLayout.cshtml";
+    //TODO: If there is time, implement IComparable for sorting
+    //Model.ShopPrices.Sort();
+}
+
+<div class="shopPrices">
+    <table class="table">
+        <thead>
+            <td>
+                <p >Winkel</p>
+            </td>
+            <td>
+                <p >Prijs</p>
+            </td>
+            <td></td>
+        </thead>
+        <tbody>
+        @if (Model.ShopPrices.Count != 0)
+        {
+            foreach (var sp in Model.ShopPrices)
+            {
+                <tr>
+                    <td class="spShop">
+                        <a href="@sp.ProductURL">@sp.Shop.Name</a>
+                    </td>
+                    <td class="shopPrice">
+                        <a href="@sp.ProductURL">@sp.Price</a>
+                    </td>
+                    <td class="WatchThis">
+                        <a href="@sp.ProductURL">Bekijk!</a>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+    @if (Model.ShopPrices.Count == 0)
+    {
+        <h3>Sorry, er zijn helaas nog geen prijzen beschikbaar van dit product :(</h3>
+    }
+</div>
+
+

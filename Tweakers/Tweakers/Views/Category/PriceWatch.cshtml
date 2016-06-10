@@ -1,0 +1,20 @@
+﻿@model List<Tweakers.Models.Category>
+
+@{
+    ViewBag.Title = "PriceWatch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PriceWatch</h2>
+<div class="categories">
+    <ul class="categories">
+        @foreach (var pc in Model)
+        {
+            <li>@Html.ActionLink(pc.Name, "Cat" + pc.ID, "Category")</li>
+        }
+    </ul>
+</div>
+
+
+
+

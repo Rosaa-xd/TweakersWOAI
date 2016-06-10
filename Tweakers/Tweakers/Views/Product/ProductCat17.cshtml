@@ -1,0 +1,42 @@
+﻿@model List<Tweakers.Models.Product>
+
+@{
+    ViewBag.Title = "Behuizingen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <p>Product</p>
+                </th>
+                <th>
+                    <p>Review Score</p>
+                </th>
+                <th>
+                    <p>Prijs</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>
+                        <p>@Html.ActionLink(p.Name + " " + p.SKU, "Product" + p.ID, new { id = p.ID })</p>
+                    </td>
+                    <td>
+                        <p>Score: @p.AverageReviewScore</p>
+                    </td>
+                    <td>
+                        <p>Prijs: @p.Price</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

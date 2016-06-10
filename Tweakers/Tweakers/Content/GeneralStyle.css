@@ -1,0 +1,123 @@
+﻿a {
+    color: red;
+    text-decoration: none;
+}
+
+.nav {
+    width: 100vw;
+}
+
+.nav ul li {
+    list-style: none;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    text-align: center;
+    height: 25px;
+    width: 20%;
+    float: left;
+    font-family: "Roboto Condensed", "helvetica", "Liberation Sans", sans-serif;
+    color: chartreuse;
+    background-color: red;
+}
+
+body .render_body_content {
+    margin-left: 40px;
+}
+
+.productPicture {
+    max-height: 200px;
+    max-width: 250px;
+    float: left;
+}
+
+footer {
+    clear: both;
+}
+
+.top {
+    height: 200px;
+    width: 100vw;
+}
+
+.specs {
+    margin-left: 300px;
+}
+
+.nav-tabs {
+    width: 100vw;
+    margin-top: 125px;
+    height: 30px;
+}
+
+.nav-tabs ul li {
+    list-style: none;
+}
+
+.nav-tabs ul li a {
+    text-decoration: none;
+    text-align: center;
+    height: 25px;
+    width: 15%;
+    float: left;
+    font-family: "Roboto Condesed", "helvetica", "Liberation Sans", sans-serif;
+}
+
+.shopPrices {
+    margin-top: 50px;
+}
+
+.shopPrices p {
+    float: left;
+}
+.specTable {
+    width: 500px;
+    float: right;
+    margin-right: 300px;
+    margin-top: 30px;
+}
+
+.specTable table tbody tr td p {
+    margin: 0 auto;
+}
+
+.pictures {
+    float: left;
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+.pictureTable tbody tr td img {
+    max-height: 400px;
+    max-width: 600px;
+}
+
+.reviews {
+    width: 1000px;
+    margin-top: 100px;
+    padding: 0;
+}
+
+.author {
+    margin-left: 20px;
+}
+
+.review {
+    margin: 20px;
+}
+
+.pros {
+    float: left;
+    max-width: 30%;
+}
+
+.cons {
+    max-width: 30%;
+    margin-left: 35%;
+}
+
+.score {
+    float: right;
+    max-width: 30%;
+}

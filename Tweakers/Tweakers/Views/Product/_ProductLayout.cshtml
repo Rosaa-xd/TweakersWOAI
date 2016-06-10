@@ -1,0 +1,29 @@
+﻿@model Tweakers.Models.Product
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var topPicture = Model.ProductPictures.First();
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="top">
+    <div class="productOverview">
+        <img class="productPicture" src="@topPicture.PictureURL" />
+        <div class="specs">
+            <p id="price">Prijs: @Model.Price</p>
+            <p>@Html.ActionLink("Willen", "WishList", "UserList", new { id = Model.ID }, null)</p>
+            <p>@Html.ActionLink("Hebben", "Inventory", "UserList", new { id = Model.ID }, null)</p>
+        </div>
+    </div>
+    <div class="nav-tabs">
+        <ul>
+            <li>@Html.ActionLink("Prijzen", "ShopPricesProduct", "Product", new { id = Model.ID }, null)</li>
+            <li>@Html.ActionLink("Specificaties", "SpecsProduct", "Product", new { id = Model.ID }, null)</li>
+            <li>@Html.ActionLink("Reviews", "ReviewsProduct", "Product", new { id = Model.ID }, null)</li>
+        </ul>
+    </div>
+</div>
+<div class="render_body_content">
+    @RenderBody()
+</div>

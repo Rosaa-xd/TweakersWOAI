@@ -1,0 +1,96 @@
+﻿@using Tweakers.Models
+@model Tweakers.Models.Product
+
+@{
+    Layout = "~/Views/Product/_ProductLayout.cshtml";
+}
+
+<div class="reviews">
+    @if (Model.Reviews.Count != 0)
+    {
+        foreach (var r in Model.Reviews)
+        {
+            <div class="thisReview">
+                <div class="author">
+                    <p>@r.User.Name</p>
+                    <p id="date">@r.Date.ToString("dd-MM-yyyy")</p>
+                </div>
+                <div class="review">
+                    <p>@r.Explanation</p>
+                    <div class="score">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <b>Eindoordeel</b>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>@r.Score</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="assets">
+                        <div class="pros">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <b>Pluspunten</b>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var a in r.Assets)
+                                    {
+                                        if (a.Type == AssetType.Positive)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <p>@a.Explanation</p>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="cons">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <b>Minpunten</b>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var a in r.Assets)
+                                    {
+                                        if (a.Type == AssetType.Negative)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <p>@a.Explanation</p>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h3>Er zijn helaas geen reviews van dit product beschikbaar :(</h3>
+    }
+</div>

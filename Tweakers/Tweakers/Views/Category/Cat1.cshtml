@@ -1,0 +1,14 @@
+﻿@model List<Tweakers.Models.Category>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div>
+        <ul class="categories">
+            @foreach (var c in Model)
+            {
+                <li>@Html.ActionLink(c.Name, "Cat" + c.ID, "Category")</li>
+            }
+        </ul>
+    </div>

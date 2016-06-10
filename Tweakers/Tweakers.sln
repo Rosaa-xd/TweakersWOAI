@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tweakers", "Tweakers\Tweakers.csproj", "{6C032A86-75B6-4BF9-831F-97A2FABA05F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tweakers.Tests", "Tweakers.Tests\Tweakers.Tests.csproj", "{7113C2CB-4B26-4537-99AE-7E88CA8E5984}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C032A86-75B6-4BF9-831F-97A2FABA05F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C032A86-75B6-4BF9-831F-97A2FABA05F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C032A86-75B6-4BF9-831F-97A2FABA05F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C032A86-75B6-4BF9-831F-97A2FABA05F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7113C2CB-4B26-4537-99AE-7E88CA8E5984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7113C2CB-4B26-4537-99AE-7E88CA8E5984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7113C2CB-4B26-4537-99AE-7E88CA8E5984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7113C2CB-4B26-4537-99AE-7E88CA8E5984}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

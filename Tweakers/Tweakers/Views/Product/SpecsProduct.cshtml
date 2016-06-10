@@ -1,0 +1,46 @@
+﻿@model Tweakers.Models.Product
+
+@{
+    Layout = "~/Views/Product/_ProductLayout.cshtml";
+}
+
+<div class="specTable">
+    <table class="table">
+        <thead>
+            <td>
+                <b>Specificatie</b>
+            </td>
+            <td>
+                <b>Waarde</b>
+            </td>
+        </thead>
+        <tbody>
+            @foreach (var s in Model.ProductSpecifications)
+            {
+                <tr>
+                    <td>
+                        <p>@s.Name</p>
+                    </td>
+                    <td>
+                        <p>@s.Value</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="pictures">
+    <table class="pictureTable">
+        <tbody>
+            @foreach (var p in Model.ProductPictures)
+            {
+                <tr>
+                    <td>
+                        <img src="@p.PictureURL"/>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
