@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
@@ -22,19 +20,6 @@ namespace Tweakers.Models
             ID = id;
             Type = type;
             Explanation = explanation;
-        }
-
-        public Asset(AssetType type, string explanation)
-        {
-            Type = type;
-            Explanation = explanation;
-        }
-
-        public Asset(AssetType type, string explanation, List<ProductReview> productReviews)
-        {
-            Type = type;
-            Explanation = explanation;
-            ProductReviews = productReviews;
         }
         #endregion
 

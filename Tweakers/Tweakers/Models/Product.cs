@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 
@@ -25,78 +23,6 @@ namespace Tweakers.Models
         public List<ShopPrice> ShopPrices;
 
         #region Constructors
-
-        public Product(int id, string name, string brand, string sku, long ean, ProductType productType, Category category)
-        {
-            ID = id;
-            Name = name;
-            Brand = brand;
-            SKU = sku;
-            EAN = ean;
-            ProductType = productType;
-            Category = category;
-        }
-        
-        public Product(int id, string name, string brand, string sku, long ean, double averageReviewScore, double price,
-            ProductType productType, Category category)
-        {
-            ID = id;
-            Name = name;
-            Brand = brand;
-            SKU = sku;
-            EAN = ean;
-            AverageReviewScore = averageReviewScore;
-            Price = price;
-            ProductType = productType;
-            Category = category;
-        }
-
-        public Product(int id, string name, string brand, string sku, long ean, double averageReviewScore, double price,
-            Category category)
-        {
-            ID = id;
-            Name = name;
-            Brand = brand;
-            SKU = sku;
-            EAN = ean;
-            AverageReviewScore = averageReviewScore;
-            Price = price;
-            Category = category;
-        }
-
-        public Product(string name, string brand, string sku, long ean, ProductType productType, Category category,
-            List<ProductPicture> productPictures, List<ProductSpecification> productSpecifications,
-            List<UserList> userLists, List<ProductReview> reviews, List<ShopPrice> shopPrices)
-        {
-            Name = name;
-            Brand = brand;
-            SKU = sku;
-            EAN = ean;
-            ProductType = productType;
-            Category = category;
-            ProductPictures = productPictures;
-            ProductSpecifications = productSpecifications;
-            UserLists = userLists;
-            Reviews = reviews;
-            ShopPrices = shopPrices;
-        }
-
-        public Product(string name, string brand, string sku, long ean, Category category,
-            List<ProductPicture> productPictures, List<ProductSpecification> productSpecifications,
-            List<UserList> userLists, List<ProductReview> reviews, List<ShopPrice> shopPrices)
-        {
-            Name = name;
-            Brand = brand;
-            SKU = sku;
-            EAN = ean;
-            Category = category;
-            ProductPictures = productPictures;
-            ProductSpecifications = productSpecifications;
-            UserLists = userLists;
-            Reviews = reviews;
-            ShopPrices = shopPrices;
-        }
-
         public Product(int id, string name, string brand, string sku, long ean, double averageReviewScore, double price, Category category,
             List<ProductPicture> productPictures, List<ProductSpecification> productSpecifications,
             List<UserList> userLists, List<ProductReview> reviews, List<ShopPrice> shopPrices)

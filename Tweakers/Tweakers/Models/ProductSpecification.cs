@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
@@ -14,13 +12,6 @@ namespace Tweakers.Models
         public string Value { get; set; }
 
         #region Constructors
-        public ProductSpecification(Product product, string name, string value)
-        {
-            Product = product;
-            Name = name;
-            Value = value;
-        }
-
         public ProductSpecification(string name, string value)
         {
             Name = name;

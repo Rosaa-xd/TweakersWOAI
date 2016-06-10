@@ -1,35 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
 {
     public class ProductReview : Review
     {
+        [Required]
         public int Score { get; set; }
+        [Required]
         public string Explanation { get; set; }
         public List<Asset> Assets;
 
         #region Constructors
-        public ProductReview(int id, User user, Product product, DateTime date, int score, string explanation)
-            : base(id, user, product, date)
-        {
-            Score = score;
-            Explanation = explanation;
-        }
-
-        public ProductReview(int id, User user, Product product, DateTime date, int score, string explanation,
-            List<Asset> assets)
-            : base (id, user, product, date)
-        {
-            Score = score;
-            Explanation = explanation;
-            Assets = assets;
-        }
-
         public ProductReview(int id, User user, DateTime date, int score, string explanation, List<Asset> assets)
             : base(id, user, date)
         {
@@ -43,15 +28,6 @@ namespace Tweakers.Models
         {
             Score = score;
             Explanation = explanation;
-        }
-
-        public ProductReview(User user, Product product, DateTime date, int score, string explanation,
-            List<Asset> assets)
-            : base(user, product, date)
-        {
-            Score = score;
-            Explanation = explanation;
-            Assets = assets;
         }
         #endregion
 

@@ -14,6 +14,7 @@ namespace Tweakers.Models
         public int SCustomerService { get; set; }
         public string ECustomerService { get; set; }
 
+        #region Constructors
         public ShopReview(int id, User user, Shop shop, DateTime date, int sGeneral, string eGeneral)
             : base(id, user, shop, date)
         {
@@ -99,5 +100,6 @@ namespace Tweakers.Models
             SCustomerService = sCustomerService;
             ECustomerService = eCustomerService;
         }
+        #endregion
     }
 }

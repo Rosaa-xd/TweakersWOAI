@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
@@ -15,14 +13,6 @@ namespace Tweakers.Models
         public string ProductURL { get; set; }
 
         #region Constructors
-        public ShopPrice(Shop shop, Product product, double price, string productURL)
-        {
-            Shop = shop;
-            Product = product;
-            Price = price;
-            ProductURL = productURL;
-        }
-
         public ShopPrice(Shop shop, double price, string productURL)
         {
             Shop = shop;

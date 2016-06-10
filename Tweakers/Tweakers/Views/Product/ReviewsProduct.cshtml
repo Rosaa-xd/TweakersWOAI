@@ -6,7 +6,7 @@
 }
 
 <div class="writeReview">
-    @Html.ActionLink("Schrijf een review!", "WriteReview", "ProductReview")
+    @Html.ActionLink("Schrijf een review!", "WriteReview", "ProductReview", new {id = @Model.ID}, null)
 </div>
 
 <div class="reviews">

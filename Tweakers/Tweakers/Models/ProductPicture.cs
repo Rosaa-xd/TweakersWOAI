@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
@@ -20,19 +18,6 @@ namespace Tweakers.Models
         {
             ID = id;
             PictureURL = pictureURL;
-        }
-
-        public ProductPicture(int id, string pictureURL, Product product)
-        {
-            ID = id;
-            PictureURL = pictureURL;
-            Product = product;
-        }
-
-        public ProductPicture(string pictureURL, Product product)
-        {
-            PictureURL = pictureURL;
-            Product = product;
         }
         #endregion
 

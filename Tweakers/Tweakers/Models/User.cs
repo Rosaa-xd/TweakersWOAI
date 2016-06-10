@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Common;
 using System.Data;
 
 namespace Tweakers.Models
@@ -25,25 +22,6 @@ namespace Tweakers.Models
             ID = id;
             Name = name;
             Password = password;
-        }
-
-        public User(string name, string password)
-        {
-            Name = name;
-            Password = password;
-        }
-
-        public User(string name, string password, List<UserList> userLists, List<Review> reviews)
-        {
-            Name = name;
-            Password = password;
-            UserLists = userLists;
-            Reviews = reviews;
-        }
-
-        public User()
-        {
-            
         }
         #endregion
 
@@ -100,6 +78,29 @@ namespace Tweakers.Models
                             Dictionaries.Users.Add(dicId, GetUserFromDataRecord(reader));
                         }
                         return Dictionaries.Users[dicId];
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static User FindByName(string name)
+        {
+            string query = "SELECT ID " +
+                           "FROM TBL_USER " +
+                           "WHERE USERNAME=:name";
+
+            using (OracleConnection connection = CreateConnection())
+            using (OracleCommand command = new OracleCommand(query, connection))
+            {
+                command.BindByName = true;
+                command.Parameters.Add(new OracleParameter("name", name));
+
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return Dictionaries.Users[GetUserIdFromRecord(reader)];
                     }
                 }
             }

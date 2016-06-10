@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
@@ -18,40 +16,12 @@ namespace Tweakers.Models
         public List<Product> Products;
 
         #region Constructors
-        public UserList(int id, string name, Type type)
-        {
-            ID = id;
-            Name = name;
-            Type = type;
-        }
-
-        public UserList(string name, Type type)
-        {
-            Name = name;
-            Type = type;
-        }
-
-        public UserList(string name, Type type, User user)
-        {
-            Name = name;
-            Type = type;
-            User = user;
-        }
-
         public UserList(int id, string name, Type type, User user)
         {
             ID = id;
             Name = name;
             Type = type;
             User = user;
-        }
-
-        public UserList(string name, Type type, User user, List<Product> products)
-        {
-            Name = name;
-            Type = type;
-            User = user;
-            Products = products;
         }
         #endregion
 
