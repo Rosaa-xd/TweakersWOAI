@@ -9,14 +9,21 @@ namespace Tweakers.Controllers
 {
     public class CategoryController : Controller
     {
+        /// <summary>
+        /// This is the ActionResult of the PriceWatch View.
+        /// It automatically generates all the parentcategories
+        /// </summary>
+        /// <returns>View(Category.ReturnAllParentCategories())</returns>
         public ActionResult PriceWatch()
         {
             return View(Category.ReturnAllParentCategories());
         }
 
         /// <summary>
-        /// Method to automatically generate the right view for the corresponding category.
-        /// If the category doens't have any subcategories, the method will redirect it to the corresponding ProductCategory
+        /// This is the ActionResult of the Cat View.
+        /// It first checks if the category has any subcategories.
+        /// If it has, then it will automatically generate all the subcategories.
+        /// If not, it will redirect you to ProductCat
         /// </summary>
         /// <param name="id"></param>
         /// <returns>
