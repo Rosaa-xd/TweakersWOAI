@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Tweakers.Models
 {
-    public abstract class Review
+    public abstract class Review : DbContext
     {
         public int ID { get; set; }
         public User User { get; set; }
