@@ -1,7 +1,7 @@
 ﻿@model List<Tweakers.Models.Product>
 
 @{
-    ViewBag.Title = "Camera's";
+    ViewBag.Title = Model[0].Category.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -28,7 +28,7 @@
                 {
                     <tr>
                         <td>
-                            <p>@Html.ActionLink(p.Name + " " + p.SKU, "Product" + p.ID, new { id = p.ID })</p>
+                            <p>@Html.ActionLink(p.Name + " " + p.SKU, "Product", new { id = p.ID })</p>
                         </td>
                         <td>
                             <p>Score: @p.AverageReviewScore</p>
@@ -39,7 +39,13 @@
                     </tr>
                 }
             }
+            else
+            {
+                <h3>Sorry, er zijn nog geen producten beschikbaar binnen deze categorie :(</h3>
+            }
         </tbody>
     </table>
-    <h3>Sorry, er zijn nog geen producten beschikbaar binnen deze categorie :(</h3>
 </div>
+
+
+
