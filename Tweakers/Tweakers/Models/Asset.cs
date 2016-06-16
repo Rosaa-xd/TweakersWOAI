@@ -17,6 +17,12 @@ namespace Tweakers.Models
         public List<ProductReview> ProductReviews;
 
         #region Constructors
+        /// <summary>
+        /// Constructor for getting an Asset out of the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="type"></param>
+        /// <param name="explanation"></param>
         public Asset(int id, AssetType type, string explanation)
         {
             ID = id;
@@ -24,22 +30,25 @@ namespace Tweakers.Models
             Explanation = explanation;
         }
 
+        /// <summary>
+        /// Constructor for an Asset which has to be inserted into the database
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="explanation"></param>
         public Asset(AssetType type, string explanation)
         {
             Type = type;
             Explanation = explanation;
         }
-
-        public Asset(AssetType type, string explanation, List<ProductReview> productReviews)
-        {
-            Type = type;
-            Explanation = explanation;
-            ProductReviews = productReviews;
-        }
         #endregion
 
         #region DatabaseMethods
-
+        /// <summary>
+        /// Databasemethod that gets all the Asserts that belongs to a ProductReview.
+        /// Puts all new Asserts in the directory and returns a list of asserts.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>asserts</returns>
         public static List<Asset> AllProductReviewAssets(int id)
         {
             List<Asset> assets = new List<Asset>();
@@ -72,6 +81,11 @@ namespace Tweakers.Models
             return assets;
         }
 
+        /// <summary>
+        /// Databasemethod that returns an Assert instance from the database.
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns>new Assert</returns>
         private static Asset GetAssetDataFromRecord(IDataRecord record)
         {
             AssetType type;
@@ -92,6 +106,11 @@ namespace Tweakers.Models
                 Convert.ToString(record["EXPLANATION"]));
         }
 
+        /// <summary>
+        /// Databasemethod that returns the Assert_id from a Datarecord
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns>id</returns>
         private static int GetAssetIdFromRecord(IDataRecord record)
         {
             return Convert.ToInt32(record["ID"]);
