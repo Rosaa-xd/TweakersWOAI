@@ -7,6 +7,9 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
 {
+    /// <summary>
+    /// Model class for Product
+    /// </summary>
     public class Product : DbContext
     {
         public int ID { get; set; }
@@ -25,78 +28,22 @@ namespace Tweakers.Models
         public List<ShopPrice> ShopPrices;
 
         #region Constructors
-
-        public Product(int id, string name, string brand, string sku, long ean, ProductType productType, Category category)
-        {
-            ID = id;
-            Name = name;
-            Brand = brand;
-            SKU = sku;
-            EAN = ean;
-            ProductType = productType;
-            Category = category;
-        }
-        
-        public Product(int id, string name, string brand, string sku, long ean, double averageReviewScore, double price,
-            ProductType productType, Category category)
-        {
-            ID = id;
-            Name = name;
-            Brand = brand;
-            SKU = sku;
-            EAN = ean;
-            AverageReviewScore = averageReviewScore;
-            Price = price;
-            ProductType = productType;
-            Category = category;
-        }
-
-        public Product(int id, string name, string brand, string sku, long ean, double averageReviewScore, double price,
-            Category category)
-        {
-            ID = id;
-            Name = name;
-            Brand = brand;
-            SKU = sku;
-            EAN = ean;
-            AverageReviewScore = averageReviewScore;
-            Price = price;
-            Category = category;
-        }
-
-        public Product(string name, string brand, string sku, long ean, ProductType productType, Category category,
-            List<ProductPicture> productPictures, List<ProductSpecification> productSpecifications,
-            List<UserList> userLists, List<ProductReview> reviews, List<ShopPrice> shopPrices)
-        {
-            Name = name;
-            Brand = brand;
-            SKU = sku;
-            EAN = ean;
-            ProductType = productType;
-            Category = category;
-            ProductPictures = productPictures;
-            ProductSpecifications = productSpecifications;
-            UserLists = userLists;
-            Reviews = reviews;
-            ShopPrices = shopPrices;
-        }
-
-        public Product(string name, string brand, string sku, long ean, Category category,
-            List<ProductPicture> productPictures, List<ProductSpecification> productSpecifications,
-            List<UserList> userLists, List<ProductReview> reviews, List<ShopPrice> shopPrices)
-        {
-            Name = name;
-            Brand = brand;
-            SKU = sku;
-            EAN = ean;
-            Category = category;
-            ProductPictures = productPictures;
-            ProductSpecifications = productSpecifications;
-            UserLists = userLists;
-            Reviews = reviews;
-            ShopPrices = shopPrices;
-        }
-
+        /// <summary>
+        /// Constructor for getting a Product out of the database when the product doesn't have a ProductType
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="brand"></param>
+        /// <param name="sku"></param>
+        /// <param name="ean"></param>
+        /// <param name="averageReviewScore"></param>
+        /// <param name="price"></param>
+        /// <param name="category"></param>
+        /// <param name="productPictures"></param>
+        /// <param name="productSpecifications"></param>
+        /// <param name="userLists"></param>
+        /// <param name="reviews"></param>
+        /// <param name="shopPrices"></param>
         public Product(int id, string name, string brand, string sku, long ean, double averageReviewScore, double price, Category category,
             List<ProductPicture> productPictures, List<ProductSpecification> productSpecifications,
             List<UserList> userLists, List<ProductReview> reviews, List<ShopPrice> shopPrices)
@@ -116,6 +63,23 @@ namespace Tweakers.Models
             ShopPrices = shopPrices;
         }
 
+        /// <summary>
+        /// Constructor for getting a Product out of the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="brand"></param>
+        /// <param name="sku"></param>
+        /// <param name="ean"></param>
+        /// <param name="averageReviewScore"></param>
+        /// <param name="price"></param>
+        /// <param name="productType"></param>
+        /// <param name="category"></param>
+        /// <param name="productPictures"></param>
+        /// <param name="productSpecifications"></param>
+        /// <param name="userLists"></param>
+        /// <param name="reviews"></param>
+        /// <param name="shopPrices"></param>
         public Product(int id, string name, string brand, string sku, long ean, double averageReviewScore, double price, ProductType productType,
             Category category, List<ProductPicture> productPictures, List<ProductSpecification> productSpecifications,
             List<UserList> userLists, List<ProductReview> reviews, List<ShopPrice> shopPrices)
@@ -138,6 +102,12 @@ namespace Tweakers.Models
         #endregion
 
         #region DatabaseMethods
+        /// <summary>
+        /// Databasemethod that gets all the Products that is in a certain Category.
+        /// Puts all new Products in the directory and returns a list of Products.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<Product> FindAllProductsInCategory(int id)
         {
             List<Product> products = new List<Product>();
@@ -171,6 +141,11 @@ namespace Tweakers.Models
             return products;
         }
 
+        /// <summary>
+        /// Databasemethod that gets the average review score of a certain Product.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static double GetProductAverageReviewScore(int id)
         {
             string query = "SELECT AVG(SCORE) " +
@@ -200,6 +175,11 @@ namespace Tweakers.Models
             return 0.00;
         }
 
+        /// <summary>
+        /// Databasemethod that gets the lowest product price of a certain Product.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static double GetProductPrice(int id)
         {
             string query = "SELECT MIN(PRICE) " +
@@ -227,6 +207,11 @@ namespace Tweakers.Models
             return 0.00;
         }
 
+        /// <summary>
+        /// Databasemethod that returns a Product instance from a database.
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static Product GetProductFromDataRecord(IDataRecord record)
         {
             int id = Convert.ToInt32(record["ID"]);
@@ -254,6 +239,11 @@ namespace Tweakers.Models
                 category, productPictures, productSpecifications, userLists, reviews, shopPrices);
         }
 
+        /// <summary>
+        /// Databasemethod that returns the Product_id from a Datarecord.
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static int GetProductIdFromDataRecord(IDataRecord record)
         {
             return Convert.ToInt32(record["ID"]);

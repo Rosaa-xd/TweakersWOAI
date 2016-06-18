@@ -7,6 +7,9 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
 {
+    /// <summary>
+    /// Model class for ProductPicture
+    /// </summary>
     public class ProductPicture : DbContext
     {
         public int ID { get; set; }
@@ -15,29 +18,25 @@ namespace Tweakers.Models
 
 
         #region Constructors
-
+        /// <summary>
+        /// Constructor for getting a ProductPicture out of the database.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="pictureURL"></param>
         public ProductPicture(int id, string pictureURL)
         {
             ID = id;
             PictureURL = pictureURL;
         }
-
-        public ProductPicture(int id, string pictureURL, Product product)
-        {
-            ID = id;
-            PictureURL = pictureURL;
-            Product = product;
-        }
-
-        public ProductPicture(string pictureURL, Product product)
-        {
-            PictureURL = pictureURL;
-            Product = product;
-        }
         #endregion
 
         #region DatabaseMethods
-
+        /// <summary>
+        /// Databasemethod that gets all the ProductPictures that is in a certain Product.
+        /// Puts all new ProductPictures in the directory and retuns a list of asserts.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<ProductPicture> FindAllProductPicturesForProduct(int id)
         {
             List<ProductPicture> productPictures = new List<ProductPicture>();
@@ -72,6 +71,11 @@ namespace Tweakers.Models
             return productPictures;
         }
 
+        /// <summary>
+        /// Databasemethod that returns a ProductPicture instance from the database.
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static ProductPicture GetProductPictureDataFromRecord(IDataRecord record)
         {
             return new ProductPicture(
@@ -79,6 +83,11 @@ namespace Tweakers.Models
                 Convert.ToString(record["PICTURELINK"]));
         }
 
+        /// <summary>
+        /// Databasemethod that returns the ProductPicture_id from a Datarecord.
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static int GetProductPictureIdFromRecord(IDataRecord record)
         {
             return Convert.ToInt32(record["ID"]);

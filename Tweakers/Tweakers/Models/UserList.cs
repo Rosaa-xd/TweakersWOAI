@@ -9,6 +9,9 @@ namespace Tweakers.Models
 {
     public enum Type { Inventory, WishList }
     
+    /// <summary>
+    /// Model class for UserList
+    /// </summary>
     public class UserList : DbContext
     {
         public int ID { get; set; }
@@ -18,26 +21,25 @@ namespace Tweakers.Models
         public List<Product> Products;
 
         #region Constructors
-        public UserList(int id, string name, Type type)
-        {
-            ID = id;
-            Name = name;
-            Type = type;
-        }
-
-        public UserList(string name, Type type)
-        {
-            Name = name;
-            Type = type;
-        }
-
+        /// <summary>
+        /// Constructor for inserting a UserList into the database
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="user"></param>
         public UserList(string name, Type type, User user)
         {
             Name = name;
             Type = type;
             User = user;
         }
-
+        /// <summary>
+        /// Constructor for getting a UserList out of the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="user"></param>
         public UserList(int id, string name, Type type, User user)
         {
             ID = id;
@@ -46,6 +48,13 @@ namespace Tweakers.Models
             User = user;
         }
 
+        /// <summary>
+        /// Constructor for inserting a UserList with Products into the database
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="user"></param>
+        /// <param name="products"></param>
         public UserList(string name, Type type, User user, List<Product> products)
         {
             Name = name;
@@ -56,7 +65,12 @@ namespace Tweakers.Models
         #endregion
 
         #region DatabaseMethods
-
+        /// <summary>
+        /// Databasemethod that gets all the UserLists that have a certain Product
+        /// Puts all new UserLists in the direcotry and returns a list of UserLists
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<UserList> AllUserListsWithProduct(int id)
         {
             List<UserList> userLists = new List<UserList>();
@@ -89,6 +103,11 @@ namespace Tweakers.Models
             return userLists;
         }
 
+        /// <summary>
+        /// Databasemethod that returns a UserList instrance from the database.
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static UserList GetUserListDataFromRecord(IDataRecord record)
         {
             Type type;
@@ -110,6 +129,11 @@ namespace Tweakers.Models
                 User.FindById(Convert.ToInt32(record["USER_ID"])));
         }
 
+        /// <summary>
+        /// Databasemethod that returns a UserList_id from a Datarecord
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static int GetUserListIdFromRecord(IDataRecord record)
         {
             return Convert.ToInt32(record["ID"]);

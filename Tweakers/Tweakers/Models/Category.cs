@@ -7,6 +7,9 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
 {
+    /// <summary>
+    /// Model class for Category
+    /// </summary>
     public class Category : DbContext
     {
         public int ID { get; set; }

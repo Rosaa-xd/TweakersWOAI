@@ -9,6 +9,9 @@ namespace Tweakers.Models
 {
     public enum AssetType { Positive, Negative }
 
+    /// <summary>
+    /// Model class for Asset
+    /// </summary>
     public class Asset : DbContext
     {
         public int ID { get; set; }

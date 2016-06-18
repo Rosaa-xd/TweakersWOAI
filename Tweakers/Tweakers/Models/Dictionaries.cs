@@ -5,6 +5,9 @@ using System.Web;
 
 namespace Tweakers.Models
 {
+    /// <summary>
+    /// Class for defining all the Dictionaries used
+    /// </summary>
     public static class Dictionaries
     {
         //Dictionary for all products

@@ -7,6 +7,9 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
 {
+    /// <summary>
+    /// Model class for ProductSpecification
+    /// </summary>
     public class ProductSpecification : DbContext
     {
         public Product Product { get; set; }
@@ -14,13 +17,11 @@ namespace Tweakers.Models
         public string Value { get; set; }
 
         #region Constructors
-        public ProductSpecification(Product product, string name, string value)
-        {
-            Product = product;
-            Name = name;
-            Value = value;
-        }
-
+        /// <summary>
+        /// Constructor for getting a ProductSpecification out of the database
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
         public ProductSpecification(string name, string value)
         {
             Name = name;
@@ -29,7 +30,12 @@ namespace Tweakers.Models
         #endregion
 
         #region DatabaseMethods
-
+        /// <summary>
+        /// Databasemethod that gets all the ProductSpecifications of a certain product.
+        /// Puts all new ProductSpecifications in the directory and returns a list of ProductSpecifications.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<ProductSpecification> FindAllSpecs(int id)
         {
             List<ProductSpecification> productSpecifications = new List<ProductSpecification>();
@@ -63,6 +69,11 @@ namespace Tweakers.Models
             return productSpecifications;
         }
 
+        /// <summary>
+        /// Databasemethod that returns a ProductSpecification instance from the database
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static ProductSpecification GetSpecFromDataRecord(IDataRecord record)
         {
             return new ProductSpecification(
@@ -71,7 +82,7 @@ namespace Tweakers.Models
         }
 
         /// <summary>
-        /// ShopPrice has a composite primary key in the database with SPEC_ID and PRODUCT_ID as its parameters.
+        /// ProductSpecification has a composite primary key in the database with SPEC_ID and PRODUCT_ID as its parameters.
         /// Therefore the combination of SPEC_ID and PRODUCT_ID is always unique and usable as key for the dictionary
         /// </summary>
         /// <param name="record"></param>

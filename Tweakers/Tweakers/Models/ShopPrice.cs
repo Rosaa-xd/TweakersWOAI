@@ -7,6 +7,9 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
 {
+    /// <summary>
+    /// Model class for ShopPrice
+    /// </summary>
     public class ShopPrice : DbContext
     {
         public Shop Shop { get; set; }
@@ -15,14 +18,12 @@ namespace Tweakers.Models
         public string ProductURL { get; set; }
 
         #region Constructors
-        public ShopPrice(Shop shop, Product product, double price, string productURL)
-        {
-            Shop = shop;
-            Product = product;
-            Price = price;
-            ProductURL = productURL;
-        }
-
+        /// <summary>
+        /// Constructor for getting a ShopPrice out of the database
+        /// </summary>
+        /// <param name="shop"></param>
+        /// <param name="price"></param>
+        /// <param name="productURL"></param>
         public ShopPrice(Shop shop, double price, string productURL)
         {
             Shop = shop;
@@ -32,7 +33,12 @@ namespace Tweakers.Models
         #endregion
 
         #region DatabaseMethods
-
+        /// <summary>
+        /// Databasemethod for getting all ShopPrices of a certain product
+        /// Put all new ShopPrices in the directory and returns a list of ShopPrices
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<ShopPrice> AllShopPriceOfProduct(int id)
         {
             List<ShopPrice> shopPrices = new List<ShopPrice>();
@@ -64,6 +70,11 @@ namespace Tweakers.Models
             return shopPrices;
         }
 
+        /// <summary>
+        /// Databasemethod that returns a ShopPrice instance from the database
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static ShopPrice GetShopPriceDataFromRecord(IDataRecord record)
         {
             return new ShopPrice(

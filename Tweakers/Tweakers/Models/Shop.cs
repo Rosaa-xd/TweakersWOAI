@@ -7,6 +7,9 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
 {
+    /// <summary>
+    /// Model class for Shop
+    /// </summary>
     public class Shop : DbContext
     {
         public int ID { get; set; }
@@ -14,26 +17,24 @@ namespace Tweakers.Models
         public List<ShopPrice> ShopPrices;
 
         #region Constructors
+        /// <summary>
+        /// Constructor for getting a Shop out of the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public Shop(int id, string name)
         {
             ID = id;
             Name = name;
         }
-
-        public Shop(string name)
-        {
-            Name = name;
-        }
-
-        public Shop(string name, List<ShopPrice> shopPrices)
-        {
-            Name = name;
-            ShopPrices = shopPrices;
-        }
         #endregion
 
         #region DatabaseMethods
-
+        /// <summary>
+        /// Databasemethod for finding a shop by its ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Shop FindById(int id)
         {
             string query = "SELECT * " +
@@ -62,6 +63,11 @@ namespace Tweakers.Models
             return null;
         }
 
+        /// <summary>
+        /// Databasemethod that returns a Shop instance from the database.
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static Shop GetShopDataFromRecord(IDataRecord record)
         {
             return new Shop(
@@ -69,6 +75,11 @@ namespace Tweakers.Models
                 Convert.ToString(record["NAME"]));
         }
 
+        /// <summary>
+        /// Databasemethod that returns the Shop_ID from a Datarecord.
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static int GetShopIdFromDataRecord(IDataRecord record)
         {
             return Convert.ToInt32(record["ID"]);
