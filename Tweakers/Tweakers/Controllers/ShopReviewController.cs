@@ -6,10 +6,16 @@ using System.Web.Mvc;
 
 namespace Tweakers.Controllers
 {
+    /// <summary>
+    /// Controller class for ShopReview
+    /// </summary>
     public class ShopReviewController : Controller
     {
-        // GET: ShopReview
-        public ActionResult Index()
+        /// <summary>
+        /// This is the ActionResult of the ShopReview View
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ShopReview()
         {
             return View();
         }

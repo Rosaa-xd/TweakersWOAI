@@ -8,6 +8,9 @@ using Tweakers.Models;
 
 namespace Tweakers.Controllers
 {
+    /// <summary>
+    /// Controller class for User
+    /// </summary>
     public class UserController : Controller
     {
         /// <summary>

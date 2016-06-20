@@ -7,11 +7,19 @@ using Tweakers.Models;
 
 namespace Tweakers.Controllers
 {
+    /// <summary>
+    /// Controller class for ProductReview
+    /// </summary>
     public class ProductReviewController : Controller
     {
         private List<ProductReview> prs = new List<ProductReview>();
         private User user = Models.User.FindByName(System.Web.HttpContext.Current.User.Identity.Name);
 
+        /// <summary>
+        /// This is the ActionResult for the WriteReview View
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         public ActionResult WriteReview(int id)
         {
@@ -20,6 +28,12 @@ namespace Tweakers.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This is the ActionResult of the WriteReview View which saves the created ProductReview
+        /// </summary>
+        /// <param name="score"></param>
+        /// <param name="explanation"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult WriteReview(int score, string explanation)
         {

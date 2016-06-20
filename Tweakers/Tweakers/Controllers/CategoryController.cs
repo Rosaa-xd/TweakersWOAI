@@ -7,6 +7,9 @@ using Tweakers.Models;
 
 namespace Tweakers.Controllers
 {
+    /// <summary>
+    /// Controller class for Category
+    /// </summary>
     public class CategoryController : Controller
     {
         /// <summary>

@@ -7,6 +7,9 @@ using Tweakers.Models;
 
 namespace Tweakers.Controllers
 {
+    /// <summary>
+    /// Controller class for Product
+    /// </summary>
     public class ProductController : Controller
     {
         /// <summary>
