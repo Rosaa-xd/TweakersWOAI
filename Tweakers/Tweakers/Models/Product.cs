@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 
@@ -133,6 +131,38 @@ namespace Tweakers.Models
                         {
                             Dictionaries.Products.Add(dicId,
                                 GetProductFromDataRecord(reader));
+                        }
+                        products.Add(Dictionaries.Products[dicId]);
+                    }
+                }
+            }
+            return products;
+        }
+
+        public static List<Product> FindAllProductsInUserList(int id)
+        {
+            List<Product> products = new List<Product>();
+
+            string query = "SELECT * " +
+                           "FROM TBL_PRODUCT P " +
+                           "INNER JOIN TBL_PRODUCT_LIST PL ON P.ID = PL.PRODUCT_ID " +
+                           "INNER JOIN TBL_LIST L ON L.ID = PL.LIST_ID " +
+                           "WHERE L.ID=:id";
+
+            using (OracleConnection connection = CreateConnection())
+            using (OracleCommand command = new OracleCommand(query, connection))
+            {
+                command.BindByName = true;
+                command.Parameters.Add(new OracleParameter("id", id));
+
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var dicId = GetProductIdFromDataRecord(reader);
+                        if (!Dictionaries.Products.ContainsKey(dicId))
+                        {
+                            Dictionaries.Products.Add(dicId, GetProductFromDataRecord(reader));
                         }
                         products.Add(Dictionaries.Products[dicId]);
                     }

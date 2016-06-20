@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Tweakers.Models
 {
@@ -17,21 +14,6 @@ namespace Tweakers.Models
         public DateTime Date { get; set; }
 
         #region Constructors
-        /// <summary>
-        /// Constructor for getting a ProductReview out of the database.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="user"></param>
-        /// <param name="product"></param>
-        /// <param name="date"></param>
-        protected Review(int id, User user, Product product, DateTime date)
-        {
-            ID = id;
-            User = user;
-            Product = product;
-            Date = date;
-        }
-
         /// <summary>
         /// Constructor for getting a Review out of the database
         /// </summary>

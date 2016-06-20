@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
@@ -29,23 +27,8 @@ namespace Tweakers.Models
         /// <param name="date"></param>
         /// <param name="score"></param>
         /// <param name="explanation"></param>
-        public ProductReview(int id, User user, Product product, DateTime date, int score, string explanation)
-            : base(id, user, product, date)
-        {
-            Score = score;
-            Explanation = explanation;
-        }
-
-        /// <summary>
-        /// Constructor for inserting a ProductReview in a database without assets
-        /// </summary>
-        /// <param name="user"></param>
-        /// <param name="product"></param>
-        /// <param name="date"></param>
-        /// <param name="score"></param>
-        /// <param name="explanation"></param>
-        public ProductReview(User user, Product product, DateTime date, int score, string explanation)
-            : base(user, product, date)
+        public ProductReview(int id, User user, DateTime date, int score, string explanation)
+            : base(id, user, date)
         {
             Score = score;
             Explanation = explanation;
@@ -66,6 +49,21 @@ namespace Tweakers.Models
             Score = score;
             Explanation = explanation;
             Assets = assets;
+        }
+
+        /// <summary>
+        /// Constructor for inserting a ProductReview in a database without assets
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="product"></param>
+        /// <param name="date"></param>
+        /// <param name="score"></param>
+        /// <param name="explanation"></param>
+        public ProductReview(User user, Product product, DateTime date, int score, string explanation)
+            : base(user, product, date)
+        {
+            Score = score;
+            Explanation = explanation;
         }
 
         /// <summary>

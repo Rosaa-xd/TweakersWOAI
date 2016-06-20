@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
 {
-    public enum Type { Inventory, WishList }
+    public enum UserListType { Inventory, WishList }
     
     /// <summary>
     /// Model class for UserList
@@ -16,7 +14,7 @@ namespace Tweakers.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public Type Type { get; set; }
+        public UserListType Type { get; set; }
         public User User { get; set; }
         public List<Product> Products;
 
@@ -27,7 +25,7 @@ namespace Tweakers.Models
         /// <param name="name"></param>
         /// <param name="type"></param>
         /// <param name="user"></param>
-        public UserList(string name, Type type, User user)
+        public UserList(string name, UserListType type, User user)
         {
             Name = name;
             Type = type;
@@ -40,22 +38,23 @@ namespace Tweakers.Models
         /// <param name="name"></param>
         /// <param name="type"></param>
         /// <param name="user"></param>
-        public UserList(int id, string name, Type type, User user)
+        public UserList(int id, string name, UserListType type, User user, List<Product> products)
         {
             ID = id;
             Name = name;
             Type = type;
             User = user;
+            Products = products;
         }
 
         /// <summary>
-        /// Constructor for inserting a UserList with Products into the database
+        /// Constructor for inserting or updating a UserList with Products into the database
         /// </summary>
         /// <param name="name"></param>
         /// <param name="type"></param>
         /// <param name="user"></param>
         /// <param name="products"></param>
-        public UserList(string name, Type type, User user, List<Product> products)
+        public UserList(string name, UserListType type, User user, List<Product> products)
         {
             Name = name;
             Type = type;
@@ -110,15 +109,15 @@ namespace Tweakers.Models
         /// <returns></returns>
         private static UserList GetUserListDataFromRecord(IDataRecord record)
         {
-            Type type;
+            UserListType type;
 
             switch (Convert.ToString(record["LIST_TYPE"]))
             {
                 case "I":
-                    type = Type.Inventory;
+                    type = UserListType.Inventory;
                     break;
                 default:
-                    type = Type.WishList;
+                    type = UserListType.WishList;
                     break;
             }
 
@@ -126,7 +125,8 @@ namespace Tweakers.Models
                 Convert.ToInt32(record["ID"]),
                 Convert.ToString(record["NAME"]),
                 type,
-                User.FindById(Convert.ToInt32(record["USER_ID"])));
+                User.FindById(Convert.ToInt32(record["USER_ID"])),
+                Product.FindAllProductsInUserList(Convert.ToInt32(record["ID"])));
         }
 
         /// <summary>

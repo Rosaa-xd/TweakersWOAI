@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Common;
 using System.Data;
 
 namespace Tweakers.Models
@@ -49,14 +46,6 @@ namespace Tweakers.Models
             Password = password;
             UserLists = userLists;
             Reviews = reviews;
-        }
-
-        /// <summary>
-        /// Constructor voor de login check
-        /// </summary>
-        public User()
-        {
-            
         }
         #endregion
 
