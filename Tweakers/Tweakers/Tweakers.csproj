@@ -130,13 +130,9 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProductPictureController.cs" />
     <Compile Include="Controllers\ProductReviewController.cs" />
-    <Compile Include="Controllers\ProductSpecificationController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
-    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
-    <Compile Include="Controllers\ShopPriceController.cs" />
     <Compile Include="Controllers\ShopReviewController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserListController.cs" />
@@ -185,14 +181,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Asset\" />
-    <Folder Include="Views\ProductPicture\" />
-    <Folder Include="Views\ProductSpecification\" />
     <Folder Include="Views\ProductType\" />
-    <Folder Include="Views\Review\" />
-    <Folder Include="Views\ShopPrice\" />
     <Folder Include="Views\ShopReview\" />
     <Folder Include="Views\Shop\" />
-    <Folder Include="Views\Specification\" />
     <Folder Include="Views\UserList\" />
   </ItemGroup>
   <PropertyGroup>
