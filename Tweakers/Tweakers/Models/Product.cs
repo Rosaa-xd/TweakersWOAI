@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 
@@ -42,6 +44,7 @@ namespace Tweakers.Models
         /// <param name="userLists"></param>
         /// <param name="reviews"></param>
         /// <param name="shopPrices"></param>
+
         public Product(int id, string name, string brand, string sku, long ean, double averageReviewScore, double price, Category category,
             List<ProductPicture> productPictures, List<ProductSpecification> productSpecifications,
             List<UserList> userLists, List<ProductReview> reviews, List<ShopPrice> shopPrices)

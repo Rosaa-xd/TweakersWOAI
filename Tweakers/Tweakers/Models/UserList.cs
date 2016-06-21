@@ -31,6 +31,7 @@ namespace Tweakers.Models
             Type = type;
             User = user;
         }
+
         /// <summary>
         /// Constructor for getting a UserList out of the database
         /// </summary>
@@ -55,6 +56,14 @@ namespace Tweakers.Models
         /// <param name="user"></param>
         /// <param name="products"></param>
         public UserList(string name, UserListType type, User user, List<Product> products)
+        {
+            Name = name;
+            Type = type;
+            User = user;
+            Products = products;
+        }
+
+        public UserList(string name, Type type, User user, List<Product> products)
         {
             Name = name;
             Type = type;

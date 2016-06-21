@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 
@@ -66,7 +65,7 @@ namespace Tweakers.Models
             Explanation = explanation;
         }
 
-        /// <summary>
+		/// <summary>
         /// Constructor for inserting a ProductReview in a database with assets
         /// </summary>
         /// <param name="user"></param>
