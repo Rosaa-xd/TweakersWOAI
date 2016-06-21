@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Tweakers.Models
 {
-    public abstract class Review
+    /// <summary>
+    /// Model class for Review
+    /// </summary>
+    public abstract class Review : DbContext
     {
         public int ID { get; set; }
         public User User { get; set; }
@@ -14,14 +14,12 @@ namespace Tweakers.Models
         public DateTime Date { get; set; }
 
         #region Constructors
-        protected Review(int id, User user, Product product, DateTime date)
-        {
-            ID = id;
-            User = user;
-            Product = product;
-            Date = date;
-        }
-
+        /// <summary>
+        /// Constructor for getting a Review out of the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="user"></param>
+        /// <param name="date"></param>
         protected Review(int id, User user, DateTime date)
         {
             ID = id;
@@ -29,6 +27,12 @@ namespace Tweakers.Models
             Date = date;
         }
 
+        /// <summary>
+        /// Constructor for inserting a ProductReview into the database
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="product"></param>
+        /// <param name="date"></param>
         protected Review(User user, Product product, DateTime date)
         {
             User = user;
@@ -36,6 +40,13 @@ namespace Tweakers.Models
             Date = date;
         }
 
+        /// <summary>
+        /// Constructor for getting a ShopReview out of the database.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="user"></param>
+        /// <param name="shop"></param>
+        /// <param name="date"></param>
         protected Review(int id, User user, Shop shop, DateTime date)
         {
             ID = id;
@@ -44,6 +55,12 @@ namespace Tweakers.Models
             Date = date;
         }
 
+        /// <summary>
+        /// Constructor for inserting a ShopReview into the database
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="shop"></param>
+        /// <param name="date"></param>
         protected Review(User user, Shop shop, DateTime date)
         {
             User = user;

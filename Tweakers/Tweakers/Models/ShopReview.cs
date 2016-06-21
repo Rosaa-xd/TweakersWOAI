@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Tweakers.Models
 {
+    /// <summary>
+    /// Model class for ShopReview
+    /// </summary>
     public class ShopReview : Review
     {
         public int SGeneral { get; set; }
@@ -14,81 +14,44 @@ namespace Tweakers.Models
         public int SCustomerService { get; set; }
         public string ECustomerService { get; set; }
 
-        #region Constructors
-        public ShopReview(int id, User user, Shop shop, DateTime date, int sGeneral, string eGeneral)
+        #region Constructor
+        /// <summary>
+        /// Constructor for getting a ShopReview out of the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="user"></param>
+        /// <param name="shop"></param>
+        /// <param name="date"></param>
+        /// <param name="sGeneral"></param>
+        /// <param name="eGeneral"></param>
+        /// <param name="sDelivery"></param>
+        /// <param name="eDelivery"></param>
+        /// <param name="sCustomerService"></param>
+        /// <param name="eCustomerService"></param>
+        public ShopReview(int id, User user, Shop shop, DateTime date, int sGeneral, string eGeneral,
+            int sDelivery, string eDelivery, int sCustomerService, string eCustomerService)
             : base(id, user, shop, date)
         {
             SGeneral = sGeneral;
             EGeneral = eGeneral;
-        }
-
-        public ShopReview(User user, Shop shop, DateTime date, int sGeneral, string eGeneral)
-            : base(user, shop, date)
-        {
-            SGeneral = sGeneral;
-            EGeneral = eGeneral;
-        }
-
-        public ShopReview(User user, Shop shop, DateTime date, int sGeneral, string eGeneral, int sDelivery)
-            : base(user, shop, date)
-        {
-            SGeneral = sGeneral;
-            EGeneral = eGeneral;
-            SDelivery = sDelivery;
-        }
-
-        public ShopReview(User user, Shop shop, DateTime date, int sGeneral, string eGeneral, int sDelivery,
-            string eDelivery)
-            : base(user, shop, date)
-        {
-            SGeneral = sGeneral;
-            EGeneral = eGeneral;
             SDelivery = sDelivery;
             EDelivery = eDelivery;
-        }
-
-        public ShopReview(User user, Shop shop, DateTime date, int sGeneral, string eGeneral, string eCustomerService,
-            int sCustomerService)
-            : base(user, shop, date)
-        {
-            SGeneral = sGeneral;
-            EGeneral = eGeneral;
             SCustomerService = sCustomerService;
             ECustomerService = eCustomerService;
         }
 
-        public ShopReview(User user, Shop shop, DateTime date, int sGeneral, string eGeneral, int sDelivery,
-            int sCustomerService)
-            : base(user, shop, date)
-        {
-            SGeneral = sGeneral;
-            EGeneral = eGeneral;
-            SDelivery = sDelivery;
-            SCustomerService = sCustomerService;
-        }
-
-        public ShopReview(User user, Shop shop, DateTime date, int sGeneral, string eGeneral, int sDelivery,
-            string eDelivery, int sCustomerService)
-            : base(user, shop, date)
-        {
-            SGeneral = sGeneral;
-            EGeneral = eGeneral;
-            SDelivery = sDelivery;
-            EDelivery = eDelivery;
-            SCustomerService = sCustomerService;
-        }
-
-        public ShopReview(User user, Shop shop, DateTime date, int sGeneral, string eGeneral, int sDelivery,
-            int sCustomerService, string eCustomerService)
-            : base(user, shop, date)
-        {
-            SGeneral = sGeneral;
-            EGeneral = eGeneral;
-            SDelivery = sDelivery;
-            SCustomerService = sCustomerService;
-            ECustomerService = eCustomerService;
-        }
-
+        /// <summary>
+        /// Constructor for inserting a ShopReview into the database
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="shop"></param>
+        /// <param name="date"></param>
+        /// <param name="sGeneral"></param>
+        /// <param name="eGeneral"></param>
+        /// <param name="sDelivery"></param>
+        /// <param name="eDelivery"></param>
+        /// <param name="sCustomerService"></param>
+        /// <param name="eCustomerService"></param>
         public ShopReview(User user, Shop shop, DateTime date, int sGeneral, string eGeneral, int sDelivery,
             string eDelivery, int sCustomerService, string eCustomerService)
             : base(user, shop, date)
@@ -100,6 +63,6 @@ namespace Tweakers.Models
             SCustomerService = sCustomerService;
             ECustomerService = eCustomerService;
         }
-        #endregion
+		#endregion
     }
 }

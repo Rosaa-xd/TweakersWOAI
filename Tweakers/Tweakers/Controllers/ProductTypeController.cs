@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Tweakers.Controllers
 {
+    /// <summary>
+    /// Controller class for ProductType
+    /// </summary>
     public class ProductTypeController : Controller
     {
-        // GET: ProductType
-        public ActionResult Index()
+        /// <summary>
+        /// This is the ActionResult of the ProductType View
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ProductType()
         {
             return View();
         }

@@ -5,6 +5,9 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
 {
+    /// <summary>
+    /// Model class for Product
+    /// </summary>
     public class Product : DbContext
     {
         public int ID { get; set; }
@@ -23,6 +26,22 @@ namespace Tweakers.Models
         public List<ShopPrice> ShopPrices;
 
         #region Constructors
+        /// <summary>
+        /// Constructor for getting a Product out of the database when the product doesn't have a ProductType
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="brand"></param>
+        /// <param name="sku"></param>
+        /// <param name="ean"></param>
+        /// <param name="averageReviewScore"></param>
+        /// <param name="price"></param>
+        /// <param name="category"></param>
+        /// <param name="productPictures"></param>
+        /// <param name="productSpecifications"></param>
+        /// <param name="userLists"></param>
+        /// <param name="reviews"></param>
+        /// <param name="shopPrices"></param>
         public Product(int id, string name, string brand, string sku, long ean, double averageReviewScore, double price, Category category,
             List<ProductPicture> productPictures, List<ProductSpecification> productSpecifications,
             List<UserList> userLists, List<ProductReview> reviews, List<ShopPrice> shopPrices)
@@ -42,6 +61,23 @@ namespace Tweakers.Models
             ShopPrices = shopPrices;
         }
 
+        /// <summary>
+        /// Constructor for getting a Product out of the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="brand"></param>
+        /// <param name="sku"></param>
+        /// <param name="ean"></param>
+        /// <param name="averageReviewScore"></param>
+        /// <param name="price"></param>
+        /// <param name="productType"></param>
+        /// <param name="category"></param>
+        /// <param name="productPictures"></param>
+        /// <param name="productSpecifications"></param>
+        /// <param name="userLists"></param>
+        /// <param name="reviews"></param>
+        /// <param name="shopPrices"></param>
         public Product(int id, string name, string brand, string sku, long ean, double averageReviewScore, double price, ProductType productType,
             Category category, List<ProductPicture> productPictures, List<ProductSpecification> productSpecifications,
             List<UserList> userLists, List<ProductReview> reviews, List<ShopPrice> shopPrices)
@@ -64,6 +100,12 @@ namespace Tweakers.Models
         #endregion
 
         #region DatabaseMethods
+        /// <summary>
+        /// Databasemethod that gets all the Products that is in a certain Category.
+        /// Puts all new Products in the directory and returns a list of Products.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<Product> FindAllProductsInCategory(int id)
         {
             List<Product> products = new List<Product>();
@@ -97,6 +139,43 @@ namespace Tweakers.Models
             return products;
         }
 
+        public static List<Product> FindAllProductsInUserList(int id)
+        {
+            List<Product> products = new List<Product>();
+
+            string query = "SELECT * " +
+                           "FROM TBL_PRODUCT P " +
+                           "INNER JOIN TBL_PRODUCT_LIST PL ON P.ID = PL.PRODUCT_ID " +
+                           "INNER JOIN TBL_LIST L ON L.ID = PL.LIST_ID " +
+                           "WHERE L.ID=:id";
+
+            using (OracleConnection connection = CreateConnection())
+            using (OracleCommand command = new OracleCommand(query, connection))
+            {
+                command.BindByName = true;
+                command.Parameters.Add(new OracleParameter("id", id));
+
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var dicId = GetProductIdFromDataRecord(reader);
+                        if (!Dictionaries.Products.ContainsKey(dicId))
+                        {
+                            Dictionaries.Products.Add(dicId, GetProductFromDataRecord(reader));
+                        }
+                        products.Add(Dictionaries.Products[dicId]);
+                    }
+                }
+            }
+            return products;
+        }
+
+        /// <summary>
+        /// Databasemethod that gets the average review score of a certain Product.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static double GetProductAverageReviewScore(int id)
         {
             string query = "SELECT AVG(SCORE) " +
@@ -126,6 +205,11 @@ namespace Tweakers.Models
             return 0.00;
         }
 
+        /// <summary>
+        /// Databasemethod that gets the lowest product price of a certain Product.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static double GetProductPrice(int id)
         {
             string query = "SELECT MIN(PRICE) " +
@@ -153,6 +237,11 @@ namespace Tweakers.Models
             return 0.00;
         }
 
+        /// <summary>
+        /// Databasemethod that returns a Product instance from a database.
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static Product GetProductFromDataRecord(IDataRecord record)
         {
             int id = Convert.ToInt32(record["ID"]);
@@ -180,6 +269,11 @@ namespace Tweakers.Models
                 category, productPictures, productSpecifications, userLists, reviews, shopPrices);
         }
 
+        /// <summary>
+        /// Databasemethod that returns the Product_id from a Datarecord.
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static int GetProductIdFromDataRecord(IDataRecord record)
         {
             return Convert.ToInt32(record["ID"]);

@@ -10,7 +10,7 @@
     <ul class="categories">
         @foreach (var pc in Model)
         {
-            <li>@Html.ActionLink(pc.Name, "Cat" + pc.ID, "Category")</li>
+            <li>@Html.ActionLink(pc.Name, "Cat", "Category", new {id = pc.ID}, null)</li>
         }
     </ul>
 </div>

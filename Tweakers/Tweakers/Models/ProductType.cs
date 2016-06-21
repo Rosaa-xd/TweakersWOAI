@@ -5,6 +5,9 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
 {
+    /// <summary>
+    /// Model class for ProductType
+    /// </summary>
     public class ProductType : DbContext
     {
         public int ID { get; set; }
@@ -12,6 +15,11 @@ namespace Tweakers.Models
         public List<Product> Products;
 
         #region Constructor
+        /// <summary>
+        /// Constructor for getting a ProductType out of the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public ProductType(int id, string name)
         {
             ID = id;
@@ -20,7 +28,11 @@ namespace Tweakers.Models
         #endregion
 
         #region DatabaseMethods
-
+        /// <summary>
+        /// Databasemethod for finding a ProductType by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static ProductType FindById(int id)
         {
             string query = "SELECT * " +
@@ -47,6 +59,11 @@ namespace Tweakers.Models
             return null;
         }
 
+        /// <summary>
+        /// Databasemethod that returns a ProductType instance from the database
+        /// </summary>
+        /// <param name="record"></param>
+        /// <returns></returns>
         private static ProductType GetProductTypeFromDataRecord(IDataRecord record)
         {
             return new ProductType(
