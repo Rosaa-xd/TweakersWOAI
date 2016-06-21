@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Tweakers.Models
@@ -26,17 +24,6 @@ namespace Tweakers.Models
         {
             ID = id;
             Name = name;
-        }
-
-        public Shop(string name)
-        {
-            Name = name;
-        }
-
-        public Shop(string name, List<ShopPrice> shopPrices)
-        {
-            Name = name;
-            ShopPrices = shopPrices;
         }
         #endregion
 

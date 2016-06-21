@@ -62,14 +62,6 @@ namespace Tweakers.Models
             User = user;
             Products = products;
         }
-
-        public UserList(string name, Type type, User user, List<Product> products)
-        {
-            Name = name;
-            Type = type;
-            User = user;
-            Products = products;
-        }
         #endregion
 
         #region DatabaseMethods
