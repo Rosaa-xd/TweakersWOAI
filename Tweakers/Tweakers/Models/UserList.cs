@@ -33,23 +33,39 @@ namespace Tweakers.Models
         }
 
         /// <summary>
-        /// Constructor for getting a UserList out of the database
+        /// Constructor for getting a UserList out of the database.
+        /// This cannot yet be tested due to complications with getting all the Product Data.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
         /// <param name="type"></param>
         /// <param name="user"></param>
-        public UserList(int id, string name, UserListType type, User user, List<Product> products)
+//        public UserList(int id, string name, UserListType type, User user, List<Product> products)
+//        {
+//            ID = id;
+//            Name = name;
+//            Type = type;
+//            User = user;
+//            Products = products;
+//        }
+
+        /// <summary>
+        /// Constructor for getting a UserList out of the database for Product
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="user"></param>
+        public UserList(int id, string name, UserListType type, User user)
         {
             ID = id;
             Name = name;
             Type = type;
             User = user;
-            Products = products;
         }
 
         /// <summary>
-        /// Constructor for inserting or updating a UserList with Products into the database
+        /// Constructor for inserting a UserList with Products into the database
         /// </summary>
         /// <param name="name"></param>
         /// <param name="type"></param>
@@ -126,8 +142,8 @@ namespace Tweakers.Models
                 Convert.ToInt32(record["ID"]),
                 Convert.ToString(record["NAME"]),
                 type,
-                User.FindById(Convert.ToInt32(record["USER_ID"])),
-                Product.FindAllProductsInUserList(Convert.ToInt32(record["ID"])));
+                User.FindById(Convert.ToInt32(record["USER_ID"])));
+            //Product.FindAllProductsInUserList(Convert.ToInt32(record["ID"]))
         }
 
         /// <summary>

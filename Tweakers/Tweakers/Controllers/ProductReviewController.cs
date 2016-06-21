@@ -27,7 +27,7 @@ namespace Tweakers.Controllers
         }
 
         /// <summary>
-        /// This is the ActionResult of the WriteReview View which saves the created ProductReview
+        /// This is the actionResult of the WriteReview View shich saves the created ProductReview
         /// </summary>
         /// <param name="score"></param>
         /// <param name="explanation"></param>

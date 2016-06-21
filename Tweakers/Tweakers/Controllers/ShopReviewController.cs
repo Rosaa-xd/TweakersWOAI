@@ -8,7 +8,7 @@ namespace Tweakers.Controllers
     public class ShopReviewController : Controller
     {
         /// <summary>
-        /// This is the ActionResult of the ShopReview View
+        /// This is the ActionResult for the ShopReview View
         /// </summary>
         /// <returns></returns>
         public ActionResult ShopReview()

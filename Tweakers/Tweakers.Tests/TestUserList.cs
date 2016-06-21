@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tweakers.Models;
 
@@ -41,8 +40,7 @@ namespace Tweakers.Tests
                 {
                     // Arrange
                     User user = new User(1, "test", "test");
-                    List<Product> products = new List<Product>();
-                    userList = new UserList(1, "test", UserListType.Inventory, user, products);
+                    userList = new UserList(1, "test", UserListType.Inventory, user);
 
                     // Act
                     userListId = userList.ID;
@@ -56,7 +54,6 @@ namespace Tweakers.Tests
                     Assert.AreEqual("test", userListName);
                     Assert.AreEqual(UserListType.Inventory, userListType);
                     Assert.AreEqual(user, userListUser);
-                    Assert.AreEqual(products, userListProducts);
                 }
                 if (i == 2)
                 {
@@ -77,6 +74,28 @@ namespace Tweakers.Tests
                     Assert.AreEqual(user, userListUser);
                     Assert.AreEqual(products, userListProducts);
                 }
+                // Lower code cannot yet be tested since this constructor does not function yet
+                /*if (i == null)
+                {
+                    // Arrange
+                    User user = new User(1, "test", "test");
+                    List<Product> products = new List<Product>();
+                    userList = new UserList(1, "test", UserListType.Inventory, user, products);
+
+                    // Act
+                    userListId = userList.ID;
+                    userListName = userList.Name;
+                    userListType = userList.Type;
+                    userListUser = userList.User;
+                    userListProducts = userList.Products;
+
+                    // Assert
+                    Assert.AreEqual(1, userListId);
+                    Assert.AreEqual("test", userListName);
+                    Assert.AreEqual(UserListType.Inventory, userListType);
+                    Assert.AreEqual(user, userListUser);
+                    Assert.AreEqual(products, userListProducts);
+                }*/
             }
         }
     }

@@ -140,6 +140,41 @@ namespace Tweakers.Models
         }
 
         /// <summary>
+        /// Databasemethod to find a category by a product_id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static Category FindByProductId(int id)
+        {
+            string query = "SELECT * " +
+                           "FROM TBL_CATEGORY C " +
+                           "INNER JOIN TBL_PRODUCTCAT PC ON C.ID = PC.CATEGORY_ID " +
+                           "INNER JOIN TBL_PRODUCT P ON P.ID = PC.PRODUCT_ID " +
+                           "WHERE P.ID=:id";
+
+            using (OracleConnection connection = CreateConnection())
+            using (OracleCommand command = new OracleCommand(query, connection))
+            {
+                command.BindByName = true;
+                command.Parameters.Add(new OracleParameter("id", id));
+
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        var dicId = GetCategoryIdFromRecord(reader);
+                        if (!Dictionaries.Categories.ContainsKey(dicId))
+                        {
+                            Dictionaries.Categories.Add(dicId, GetCategoryFromDataRecord(reader));
+                        }
+                        return Dictionaries.Categories[dicId];
+                    }
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Databasemethod that returns an Category instance from a datarecord.
         /// </summary>
         /// <param name="record"></param>

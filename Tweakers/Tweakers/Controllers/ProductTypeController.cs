@@ -7,11 +7,8 @@ namespace Tweakers.Controllers
     /// </summary>
     public class ProductTypeController : Controller
     {
-        /// <summary>
-        /// This is the ActionResult of the ProductType View
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult ProductType()
+        // GET: ProductType
+        public ActionResult Index()
         {
             return View();
         }

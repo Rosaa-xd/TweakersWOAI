@@ -139,6 +139,12 @@ namespace Tweakers.Models
             return products;
         }
 
+        /// <summary>
+        /// Databasemethod that gets all the Products that is in a certain UserList.
+        /// Puts all new Products in the directory and returns a list of Products.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<Product> FindAllProductsInUserList(int id)
         {
             List<Product> products = new List<Product>();
@@ -258,7 +264,7 @@ namespace Tweakers.Models
             List<UserList> userLists = UserList.AllUserListsWithProduct(id);
             List<ProductReview> reviews = ProductReview.AllProductReviews(id);
             List<ShopPrice> shopPrices = ShopPrice.AllShopPriceOfProduct(id);
-
+            
             if (productType == null)
             {
                 return new Product(id, name, brand, sku, ean, ars, price, category,

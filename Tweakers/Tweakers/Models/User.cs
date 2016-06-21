@@ -47,6 +47,14 @@ namespace Tweakers.Models
             UserLists = userLists;
             Reviews = reviews;
         }
+
+        /// <summary>
+        /// Constructor voor de login check
+        /// </summary>
+        public User()
+        {
+            
+        }
         #endregion
 
         #region DatabaseMethods

@@ -7,10 +7,7 @@ namespace Tweakers.Controllers
     /// </summary>
     public class HomeController : Controller
     {
-        /// <summary>
-        /// This is the ActionResult for the Index View 
-        /// </summary>
-        /// <returns></returns>
+        // GET: Home
         public ActionResult Index()
         {
             return View();

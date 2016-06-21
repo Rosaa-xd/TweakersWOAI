@@ -8,7 +8,7 @@ namespace Tweakers.Controllers
     public class UserListController : Controller
     {
         /// <summary>
-        /// This is the ActionResult that loads the WishList View
+        /// This is the ActionResult for the WishList View
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -18,7 +18,7 @@ namespace Tweakers.Controllers
         }
 
         /// <summary>
-        /// Thisis the ActionResult that loads the Inventory View
+        /// This is the ActionResult for the Inventory View
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

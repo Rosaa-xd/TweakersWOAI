@@ -35,7 +35,7 @@ namespace Tweakers.Models
         }
 
         /// <summary>
-        /// Constructor for getting a ProductReview out of a database with assets
+        /// Constructor for getting a ProductReview out of the database with assets
         /// </summary>
         /// <param name="id"></param>
         /// <param name="user"></param>
@@ -66,7 +66,7 @@ namespace Tweakers.Models
             Explanation = explanation;
         }
 
-		/// <summary>
+        /// <summary>
         /// Constructor for inserting a ProductReview in a database with assets
         /// </summary>
         /// <param name="user"></param>
